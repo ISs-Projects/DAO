@@ -1,0 +1,18 @@
+# Ignorar archivos y directorios generados por el entorno de desarrollo de NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/build/
+/nb-configuration.xml
+
+# Ignorar archivos y directorios generados por el sistema operativo
+Thumbs.db
+.DS_Store
+
+# Ignorar archivos de compilación y ejecución de Java
+/target/
+*.class
+*.jar
+
+# Persistir directorio lib en la raíz de ContactoProjectInicio
+/ContactoProjectInicio/lib/
