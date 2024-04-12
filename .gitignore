@@ -1,18 +1,30 @@
-# Ignorar archivos y directorios generados por el entorno de desarrollo de NetBeans
-/nbproject/private/
-/nbbuild/
-/dist/
-/build/
-/nb-configuration.xml
 
 # Ignorar archivos y directorios generados por el sistema operativo
 Thumbs.db
 .DS_Store
 
-# Ignorar archivos de compilación y ejecución de Java
-/target/
-*.class
-*.jar
-
 # Persistir directorio lib en la raíz de ContactoProjectInicio
-/ContactoProjectInicio/lib/
+/ContactoProjectInicio/build/*
+ContactoProjectInicio/build/built-jar.properties
+ContactoProjectInicio/build/classes/controlador/ContactoController.class
+ContactoProjectInicio/build/classes/controlador/ContactoControllerImpl.class
+ContactoProjectInicio/build/classes/Main.class
+ContactoProjectInicio/build/classes/modelo/Contacto.class
+ContactoProjectInicio/build/classes/modelo/ContactoImpl.class
+ContactoProjectInicio/build/classes/modelo/ContactoModel.class
+ContactoProjectInicio/build/classes/modelo/ContactoModelImpl.class
+ContactoProjectInicio/build/classes/vista/ContactosTableModel.class
+ContactoProjectInicio/build/classes/vista/ContactoView.class
+ContactoProjectInicio/build/classes/vista/ContactoViewImpl$1.class
+ContactoProjectInicio/build/classes/vista/ContactoViewImpl$2.class
+ContactoProjectInicio/build/classes/vista/ContactoViewImpl$3.class
+ContactoProjectInicio/build/classes/vista/ContactoViewImpl.class
+ContactoProjectInicio/build/classes/vista/JPanelContacto$1.class
+ContactoProjectInicio/build/classes/vista/JPanelContacto$2.class
+ContactoProjectInicio/build/classes/vista/JPanelContacto$3.class
+ContactoProjectInicio/build/classes/vista/JPanelContacto.class
+ContactoProjectInicio/dist/README.TXT
+ContactoProjectInicio/dist/SolucionAPDISG2Inicio.jar
+ContactoProjectInicio/nbproject/private/config.properties
+ContactoProjectInicio/nbproject/private/private.properties
+ContactoProjectInicio/nbproject/private/private.xml
