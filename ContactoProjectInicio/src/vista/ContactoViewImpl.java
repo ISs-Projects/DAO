@@ -6,6 +6,7 @@
 package vista;
 
 import controlador.ContactoController;
+import java.awt.event.MouseEvent;
 import modelo.Contacto;
 import modelo.ContactoModel;
 
@@ -57,6 +58,9 @@ public class ContactoViewImpl extends javax.swing.JFrame implements ContactoView
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTableContactosMouseClicked(evt);
             }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jTableContactosMouseReleased(evt);
+            }
         });
         jScrollPane1.setViewportView(jTableContactos);
 
@@ -90,6 +94,11 @@ public class ContactoViewImpl extends javax.swing.JFrame implements ContactoView
         Contacto contacto = ctm.getRow(this.jTableContactos.getSelectedRow());
         panelContacto.setContacto(contacto);
     }//GEN-LAST:event_jTableContactosMouseClicked
+
+    private void jTableContactosMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableContactosMouseReleased
+        // TODO add your handling code here:
+        System.out.println(evt.getClickCount());
+    }//GEN-LAST:event_jTableContactosMouseReleased
 
     /**
      * @param args the command line arguments

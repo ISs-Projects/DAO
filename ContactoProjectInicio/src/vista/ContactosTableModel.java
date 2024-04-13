@@ -37,7 +37,7 @@ public class ContactosTableModel implements TableModel {
     }
 
     public int getColumnCount() {
-        return 3; //ya que tendremos tres valores a mostrar por contacto
+        return 4; //ya que tendremos tres valores a mostrar por contacto
     }
 
     public String getColumnName(int columnIndex) {
@@ -52,6 +52,8 @@ public class ContactosTableModel implements TableModel {
             case 2:
                 name = "E-mail";
                 break;
+            case 3:
+                name = "Prueba";
         }
         return name;
     }

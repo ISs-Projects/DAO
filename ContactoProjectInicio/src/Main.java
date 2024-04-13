@@ -21,10 +21,10 @@ public class Main {
         ContactoModel model = new ContactoModelImpl();
 
         ContactoView view1 = new ContactoViewImpl();
-        ContactoView view2 = new ContactoViewImpl();
+        //ContactoView view2 = new ContactoViewImpl();
         List<ContactoView> views= new ArrayList<ContactoView>();
         views.add(view1);
-        views.add(view2);
+        //views.add(view2);
 
         ContactoController controller1 = new ContactoControllerImpl();
         

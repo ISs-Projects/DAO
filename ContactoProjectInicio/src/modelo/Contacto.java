@@ -11,7 +11,7 @@ import java.io.Serializable;
  *
  * @author Norberto Díaz-Díaz
  */
-public interface Contacto extends Serializable{
+public interface Contacto extends Serializable {
 
     String getEmail();
 
