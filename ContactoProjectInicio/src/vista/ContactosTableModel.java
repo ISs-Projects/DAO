@@ -52,8 +52,8 @@ public class ContactosTableModel implements TableModel {
             case 2:
                 name = "E-mail";
                 break;
-            case 3:
-                name = "Prueba";
+//            case 3:
+//                name = "Prueba";
         }
         return name;
     }
