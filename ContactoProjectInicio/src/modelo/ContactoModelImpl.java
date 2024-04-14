@@ -93,7 +93,7 @@ public class ContactoModelImpl implements ContactoModel {
 	    conn = DriverManager.getConnection(url, login, password);
 	    if (conn != null) {
 		Statement stmt = conn.createStatement();
-		stmt.executeUpdate(" SELECT Contactos WHERE nombre = '"+nombre+"';  ");
+		stmt.executeQuery(" SELECT Contactos WHERE nombre = '"+nombre+"';  ");
 		stmt.close();
 		conn.close();
 	    }
