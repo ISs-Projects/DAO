@@ -17,32 +17,42 @@ import java.util.logging.Logger;
  */
 public class Persistencia {
 
-    private static Connection instance;
+    private static Persistencia instance;
+    private Connection conn;
+    
+    private Persistencia(){
+	try {
+	    this.conn = createConnection();
+	} catch (ClassNotFoundException ex) {
+	    Logger.getLogger(Persistencia.class.getName()).log(Level.SEVERE, null, ex);
+	} catch (SQLException ex) {
+	    Logger.getLogger(Persistencia.class.getName()).log(Level.SEVERE, null, ex);
+	}
+    }
 
-    private static Connection createConnection() throws ClassNotFoundException, SQLException {
+    public Connection getConn() {
+	return conn;
+    }
+
+    private Connection createConnection() throws ClassNotFoundException, SQLException {
 	String login = "root";
 	String password = "developer";
 	String url = "jdbc:mysql://127.0.0.1:3306/miniagenda?serverTimezone=UTC";
 
 	Class.forName("com.mysql.cj.jdbc.Driver");
-	instance = DriverManager.getConnection(url, login, password);
 
-	return instance;
+	return DriverManager.getConnection(url, login, password);
     }
 
-    public static Connection getInstance() throws SQLException {
+    public static Persistencia getInstance() throws SQLException {
 	if (instance == null) {
-	    try {
-		instance = createConnection();
-	    } catch (ClassNotFoundException ex) {
-		Logger.getLogger(Persistencia.class.getName()).log(Level.SEVERE, null, ex);
-	    }
+	    instance = new Persistencia();
 	}
 	return instance;
     }
 
     void closeConecion() throws SQLException {
-	instance.close();
+	this.conn.close();
     }
 
     Statement createStatement() throws SQLException {

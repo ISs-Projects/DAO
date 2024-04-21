@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import persistencia.DAO.ContactoDAO;
+import persistencia.DAO.contactoDAOJDBC;
 
 /**
  *
@@ -22,6 +24,11 @@ import java.util.logging.Logger;
 public class ContactoModelImpl implements ContactoModel {
 
     private ContactoController controller;
+    private ContactoDAO dao;
+    
+    public ContactoModelImpl(){
+	this.dao = new contactoDAOJDBC();
+    }
 
     @Override
     public ContactoController getController() {
@@ -35,6 +42,7 @@ public class ContactoModelImpl implements ContactoModel {
 
     @Override
     public void nuevoContacto(Contacto contacto) {
+	this.dao.create(contacto);
 	String login = "root";
 	String password = "developer";
 	String url = "jdbc:mysql://127.0.0.1:3306/miniagenda?serverTimezone=UTC";
@@ -55,7 +63,8 @@ public class ContactoModelImpl implements ContactoModel {
 	    Logger.getLogger(ContactoModelImpl.class.getName()).log(Level.SEVERE, null, ex);
 	}
 	this.fireModelChanged();
-
+    
+  
     }
 
     @Override

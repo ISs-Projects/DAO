@@ -1,6 +1,7 @@
 
 package persistencia.DAO;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -17,13 +18,20 @@ import modelo.ContactoImpl;
  */
 public class contactoDAOJDBC implements ContactoDAO {
 
-    private Persistencia conn;
+    private Connection conn;
+    
+    public contactoDAOJDBC(){
+	try {
+	    this.conn = Persistencia.getInstance().getConn();
+	} catch (SQLException ex) {
+	    Logger.getLogger(contactoDAOJDBC.class.getName()).log(Level.SEVERE, null, ex);
+	}
+    }
 
     @Override
     public Contacto read(String name) {
 	Contacto contacto = null;
-	try {
-	    conn = (Persistencia) Persistencia.getInstance();
+	try {	    
 	    if (conn != null) {
 		Statement stmt = conn.createStatement();
 		ResultSet res = stmt.executeQuery(" SELECT Contactos WHERE nombre = '" + name + "';  ");
@@ -32,7 +40,7 @@ public class contactoDAOJDBC implements ContactoDAO {
 		String telefono = res.getString("telefono");
 		contacto = new ContactoImpl(nombre, telefono, email);
 		stmt.close();
-		conn.closeConecion();
+//		conn.closeConecion();
 	    }
 	} catch (SQLException ex) {
 	    Logger.getLogger(contactoDAOJDBC.class.getName()).log(Level.SEVERE, null, ex);
@@ -43,12 +51,11 @@ public class contactoDAOJDBC implements ContactoDAO {
     @Override
     public void create(Contacto contacto) {
 	try {
-	    conn = (Persistencia) Persistencia.getInstance();
 	    if (conn != null) {
 		Statement stmt = conn.createStatement();
 		stmt.executeUpdate("INSERT INTO Contactos (nombre,telefono,email) VALUES ('" + contacto.getNombre() + "','" + contacto.getTelefono() + "','" + contacto.getEmail() + "'); ");
 		stmt.close();
-		conn.closeConecion();
+//		conn.closeConecion();
 	    }
 	} catch (SQLException ex) {
 	    Logger.getLogger(contactoDAOJDBC.class.getName()).log(Level.SEVERE, null, ex);
@@ -58,12 +65,12 @@ public class contactoDAOJDBC implements ContactoDAO {
     @Override
     public void update(Contacto contacto) {
 	try {
-	    conn = (Persistencia) Persistencia.getInstance();
+
 	    if (conn != null) {
 		Statement stmt = conn.createStatement();
 		stmt.executeUpdate("UPDATE Contactos SET nombre = '" + contacto.getNombre() + "', telefono = '" + contacto.getTelefono() + "', email = '" + contacto.getEmail() + "' WHERE nombre = '" + contacto.getNombre() + "'; ");
 		stmt.close();
-		conn.closeConecion();
+//		conn.closeConecion();
 	    }
 	} catch (SQLException ex) {
 	    Logger.getLogger(contactoDAOJDBC.class.getName()).log(Level.SEVERE, null, ex);
@@ -73,12 +80,12 @@ public class contactoDAOJDBC implements ContactoDAO {
     @Override
     public void delete(Contacto contacto) {
 	try {
-	    conn = (Persistencia) Persistencia.getInstance();
+
 	    if (conn != null) {
 		Statement stmt = conn.createStatement();
 		stmt.executeUpdate("DELETE FROM Contactos WHERE nombre = '" + contacto.getNombre() + "';  ");
 		stmt.close();
-		conn.closeConecion();
+//		conn.closeConecion();
 	    }
 	} catch (SQLException ex) {
 	    Logger.getLogger(contactoDAOJDBC.class.getName()).log(Level.SEVERE, null, ex);
@@ -89,7 +96,6 @@ public class contactoDAOJDBC implements ContactoDAO {
     public List<Contacto> list() {
 	List<Contacto> contactos = new ArrayList<>();
 	try {
-	    conn = (Persistencia) Persistencia.getInstance();
 	    if (conn != null) {
 		Statement stmt = conn.createStatement();
 		ResultSet res = stmt.executeQuery("SELECT * FROM Contactos");
@@ -104,7 +110,7 @@ public class contactoDAOJDBC implements ContactoDAO {
 		}
 		res.close();
 		stmt.close();
-		conn.closeConecion();
+//		conn.closeConecion();
 	    }
 	} catch (SQLException ex) {
 	    Logger.getLogger(contactoDAOJDBC.class.getName()).log(Level.SEVERE, null, ex);
